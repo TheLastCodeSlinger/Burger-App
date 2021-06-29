@@ -4,7 +4,7 @@ import classes from './Order.css';
 
 const order = ( props ) => {
     const ingredients = [];
-
+    //bacon:0 salad:0.. gets the value and push it in the array ingredients.
     for ( let ingredientName in props.ingredients ) {
         ingredients.push(
             {

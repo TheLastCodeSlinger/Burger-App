@@ -49,7 +49,8 @@ const auth = props => {
       onSetAuthRedirectPath();
     }
   }, [buildingBurger, authRedirectPath, onSetAuthRedirectPath]);
-
+  
+  //Handler to target the right input and change value accordingly
   const inputChangedHandler = (event, controlName) => {
     const updatedControls = updateObject(authForm, {
       [controlName]: updateObject(authForm[controlName], {
@@ -69,10 +70,12 @@ const auth = props => {
     props.onAuth(authForm.email.value, authForm.password.value, isSignup);
   };
 
+  //login/signup
   const switchAuthModeHandler = () => {
     setIsSignup(!isSignup);
   };
 
+  //id= password/email.. config=objects nested in password/email
   const formElementsArray = [];
   for (let key in authForm) {
     formElementsArray.push({
@@ -104,6 +107,7 @@ const auth = props => {
     errorMessage = <p>{props.error.message}</p>;
   }
 
+  //auto-redirect
   let authRedirect = null;
   if (props.isAuthenticated) {
     authRedirect = <Redirect to={props.authRedirectPath} />;

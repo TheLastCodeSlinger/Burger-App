@@ -21,7 +21,7 @@ const Auth = React.lazy(() => {
 
 const app = props => {
   const { onTryAutoSignup } = props;
-
+  //Dispatch action. If token not expired -> autologin
   useEffect(() => {
     onTryAutoSignup();
   }, [onTryAutoSignup]);

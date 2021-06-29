@@ -13,7 +13,7 @@ import axios from '../../axios-orders';
 const burgerBuilder = props => {
 
   const [purchasing, setPurchasing] = useState(false);
-
+  //required to use dispatch in a functional-component
   const dispatch = useDispatch();
 
   const ings = useSelector(state => {
@@ -23,6 +23,7 @@ const burgerBuilder = props => {
   const error = useSelector(state => state.burgerBuilder.error);
   const isAuthenticated = useSelector(state => state.auth.token !== null);
 
+  // used in components/burger
   const onIngredientAdded = ingName => dispatch(actions.addIngredient(ingName));
   const onIngredientRemoved = ingName =>
     dispatch(actions.removeIngredient(ingName));
@@ -30,14 +31,17 @@ const burgerBuilder = props => {
     () => dispatch(actions.initIngredients()),
     [dispatch]
   );
+  //used in Auth
   const onInitPurchase = () => dispatch(actions.purchaseInit());
   const onSetAuthRedirectPath = path =>
     dispatch(actions.setAuthRedirectPath(path));
 
+    //loads default ingredients [0,0,0,0]
   useEffect(() => {
     onInitIngredients();
   }, [onInitIngredients]);
 
+  //Burger has a baseprice and each ingredient set price. Maps over each ingredient and returns the reduced price. Only ingredient-price counts here, hence the check if sum>0
   const updatePurchaseState = ingredients => {
     const sum = Object.keys(ingredients)
       .map(igKey => {
@@ -67,6 +71,7 @@ const burgerBuilder = props => {
     props.history.push('/checkout');
   };
 
+  //disables "remove item" if there is less than 1 ingredient.
   const disabledInfo = {
     ...ings
   };

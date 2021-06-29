@@ -5,6 +5,7 @@ import classes from './BurgerIngredient.css';
 
 const burgerIngredient = props => {
   let ingredient = null;
+  // Receives the mapped ingredients from Burger and returns grouped matches and not the as they were clicked. [111222333 instead of 123123123]
 
   switch (props.type) {
     case 'bread-bottom':
