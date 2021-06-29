@@ -1,7 +1,4 @@
 # Burger-App
-# Burger-App
-
-# Burger-App
 ## [Click me](https://myburger-65958.web.app/) and check out this Project!
 ### I coded this along a 40h Tutorial from _Maximilian Schwarzmüller_.
 #### This project only has functional components, uses Redux, Routing and is connected to a Database on Firebase.
